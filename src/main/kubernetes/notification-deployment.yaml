@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: notification-deployment
+  name: notification-deployment
+  namespace: ckad
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-deployment
+  template:
+    metadata:
+      labels:
+        app: notification-deployment
+    spec:
+      containers:
+      - image: ridaa/notification:0.0.1
+        name: notification
+        ports:
+        - containerPort: 8091
